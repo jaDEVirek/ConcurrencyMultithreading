@@ -8,7 +8,6 @@ public class ExampleRunner {
         GenericBlockingQueue<Integer> pool = new GenericBlockingQueue<Integer>(10,(Supplier<Integer>)() ->  Integer.valueOf(
                 (int) (Math.random()+3)));
 
-        // Create multiple threads that get and take objects from the pool
         for (int i = 0; i < 5; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 5; j++) {

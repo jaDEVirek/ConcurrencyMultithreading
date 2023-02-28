@@ -1,9 +1,9 @@
-package com.epam.jadevirek.task1;
+package com.epam.jadevirek.sessionTopic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConcurrentHashMapExample implements Runnable {
+public class AdditionalThreadLocalExample implements Runnable {
 
     static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
     static List<String> curentElementsOfLocalThread = new ArrayList<>();
@@ -36,9 +36,9 @@ public class ConcurrentHashMapExample implements Runnable {
     }
 
     public static void main(String[] args) {
-        Thread firstThread = new Thread(new ConcurrentHashMapExample());
+        Thread firstThread = new Thread(new AdditionalThreadLocalExample());
         firstThread.start();
-        Thread secondThread = new Thread(new ConcurrentHashMapExample());
+        Thread secondThread = new Thread(new AdditionalThreadLocalExample());
 
         secondThread.start();
     }

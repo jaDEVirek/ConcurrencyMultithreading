@@ -4,10 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
-
-import static java.lang.System.exit;
 
 public class HashMapProblem {
     private static final int NUM_THREADS = 2;
@@ -16,7 +13,7 @@ public class HashMapProblem {
     public static void main(String[] args) {
         final Map<Integer, Integer> map = new HashMap<>();
         // TODO with ConcurrentHashMap.
-        final ConcurrentHashMap<Integer, Integer> objectObjectConcurrentHashMap = new ConcurrentHashMap<>();
+        final HashMap<Integer, Integer> objectObjectConcurrentHashMap = new HashMap<>();
         final List<Thread> threads = getThreadsForGivenMap(map);
 
         threads.get(0)
@@ -41,7 +38,7 @@ public class HashMapProblem {
                 map.put(i, i);
                 System.out.println("Added element " + i);
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -55,7 +52,7 @@ public class HashMapProblem {
                 System.out.println(Thread.currentThread()
                         .getName() + " sum: " + sum);
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

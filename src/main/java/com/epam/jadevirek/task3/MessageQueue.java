@@ -7,7 +7,7 @@ import static java.lang.Thread.sleep;
 
 public class MessageQueue {
     private final Queue<Message> queue = new LinkedList<>();
-    private boolean isNotWritable;
+    private final boolean isNotWritable;
 
     private static int idSequence = 0;
     ;
@@ -17,7 +17,7 @@ public class MessageQueue {
     }
 
     private void add(Message message) {
-        synchronized (queue) {
+        synchronized (this) {
             queue.add(message);
         }
     }
@@ -53,6 +53,7 @@ public class MessageQueue {
             }
         }
         this.useMessage(this.remove());
+        this.stop(false);
     }
 
     public void stop(boolean isNotWritable) {
